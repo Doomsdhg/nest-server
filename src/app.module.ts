@@ -9,6 +9,7 @@ import { CategoryModule } from './category/category.module';
     CategoryModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      introspection: true,
       playground: true,
       debug: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql')
