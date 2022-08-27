@@ -7,5 +7,5 @@ export const ormConfig: TypeOrmModuleOptions = {
     host: 'localhost',
     port: 5432,
     entities: ['dist/**/*.entity{.ts,.js}'],
-    synchronize: true
+    synchronize: false
 };

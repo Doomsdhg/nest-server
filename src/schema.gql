@@ -10,3 +10,7 @@ type Category {
 type Query {
   categories(id: String, title: String): [Category!]
 }
+
+type Mutation {
+  createCategory(title: String!): Category!
+}
