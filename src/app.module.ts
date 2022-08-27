@@ -1,8 +1,10 @@
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { CategoryModule } from './category/category.module';
+import { ormConfig } from './orm.config';
 
 @Module({
   imports: [
@@ -13,7 +15,8 @@ import { CategoryModule } from './category/category.module';
       playground: true,
       debug: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql')
-    })
+    }),
+    TypeOrmModule.forRoot(ormConfig)
   ],
   controllers: [],
   providers: [],
