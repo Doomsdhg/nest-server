@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { CategoryModule } from './category/category.module';
 import { ormConfig } from './orm.config';
+import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { ormConfig } from './orm.config';
       debug: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql')
     }),
-    TypeOrmModule.forRoot(ormConfig)
+    TypeOrmModule.forRoot(ormConfig),
+    TodoModule
   ],
   controllers: [],
   providers: [],

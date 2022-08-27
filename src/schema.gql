@@ -4,13 +4,24 @@
 
 type Category {
   id: String!
-  title: String!
+  title: String
+  todos: [Todo!]
+}
+
+type Todo {
+  id: String!
+  text: String!
+  isCompleted: Boolean!
+  categoryId: String!
+  category: Category!
 }
 
 type Query {
-  categories(id: String, title: String): [Category!]
+  categories: [Category!]
+  todos: [Todo!]
 }
 
 type Mutation {
   createCategory(title: String!): Category!
+  createTodo(text: String!, categoryId: String!): Todo!
 }
