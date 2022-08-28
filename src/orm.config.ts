@@ -1,14 +1,12 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
 export const ormConfig: TypeOrmModuleOptions = {
+    url: process.env.DATABASE_URL,
     type: 'postgres',
-    database: 'nest_api',
-    username: 'anton',
-    password : 'qwe123',
-    host: 'localhost',
-    port: 5432,
+    ssl: {
+      rejectUnauthorized: false,
+    },
     entities: ['dist/**/*.entity{.ts,.js}'],
     synchronize: false,
-    url: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
-};
+    autoLoadEntities: true,
+  };
