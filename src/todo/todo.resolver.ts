@@ -2,6 +2,7 @@ import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/g
 import { CategoryService } from 'src/category/categories.service';
 import { Category } from 'src/category/entities/category.entity';
 import { CreateTodoArgs } from './dto/args/create-todo.args';
+import { ToggleTodoCompletedArgs } from './dto/args/toggle-todo-completed.args';
 import { Todo } from './entities/todo.entity';
 import { TodoService } from './todo.service';
 
@@ -18,13 +19,18 @@ export class TodoResolver {
     }
 
     @Mutation(returns => Todo)
-    createTodo(@Args() args: CreateTodoArgs): Promise<Todo> {
+    async createTodo(@Args() args: CreateTodoArgs): Promise<Todo> {
       return this.todoService.create(args);
+    }
+
+    @Mutation(returns => Todo)
+    async toggleTodoCompleted(@Args() args: ToggleTodoCompletedArgs): Promise<Todo> {
+      await this.todoService.toggleCompleted(args.todoId);
+      return this.todoService.findOne(args.todoId);
     }
 
     @ResolveField()
     async category(@Parent() todo: Todo): Promise<Category>{
-        const { categoryId } = todo;
-        return await this.categoryService.findOne(categoryId);
+        return await this.categoryService.findOne(todo.categoryId);
     }
 }

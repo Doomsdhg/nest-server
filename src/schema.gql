@@ -23,5 +23,11 @@ type Query {
 
 type Mutation {
   createCategory(title: String!): Category!
-  createTodo(text: String!, categoryId: String!): Todo!
+  createTodo(categoryId: String, input: Input!): Todo!
+  toggleTodoCompleted(todoId: String!): Todo!
+}
+
+input Input {
+  categoryName: String
+  text: String
 }

@@ -18,7 +18,7 @@ export class CategoryResolver {
 
     @Mutation(returns => Category)
     createCategory(@Args() args: CreateCategoryArgs): Promise<Category> {
-      return this.categoryService.create(args);
+      return this.categoryService.create(args.title);
     }
 
     @ResolveField()

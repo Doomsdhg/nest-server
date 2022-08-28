@@ -13,12 +13,26 @@ export class TodoService {
         private categoryService: CategoryService
     ){}
 
-    create(args: CreateTodoArgs): Promise<Todo>{
-        const newTodo = this.todosRepository.create({text: args.text, categoryId: args.categoryId});
+    async create(args: CreateTodoArgs): Promise<Todo>{
+        const { input } = args;
+        if (input.categoryName){
+            const createdCategory = await this.categoryService.create(input.categoryName);
+            args.categoryId = createdCategory.id;
+        }
+        const newTodo = this.todosRepository.create({text: input.text, categoryId: args.categoryId});
         return this.todosRepository.save(newTodo);
     }
 
     getAll(): Promise<Todo[]>{
         return this.todosRepository.find();
+    }
+
+    findOne(id: string): Promise<Todo>{
+        return this.todosRepository.findOneBy({id});
+    }
+
+    async toggleCompleted(id: string): Promise<void>{
+        const todo = await this.todosRepository.findOneBy({id});
+        await this.todosRepository.update(id, {isCompleted: !todo.isCompleted});
     }
 }

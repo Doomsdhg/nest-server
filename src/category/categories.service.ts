@@ -14,8 +14,8 @@ export class CategoryService {
         private todosRepository: Repository<Todo>
     ){}
 
-    create(args: CreateCategoryArgs): Promise<Category>{
-        const newCategory = this.categoriesRepository.create({title: args.title});
+    create(title: string): Promise<Category>{
+        const newCategory = this.categoriesRepository.create({title});
         return this.categoriesRepository.save(newCategory);
     }
 
