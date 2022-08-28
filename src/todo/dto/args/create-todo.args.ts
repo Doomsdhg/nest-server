@@ -1,11 +1,22 @@
-import { ArgsType, Field } from "@nestjs/graphql";
+import { ArgsType, Field, InputType, ObjectType } from "@nestjs/graphql";
+
+@InputType()
+class Input {
+
+    @Field({nullable: true})
+    categoryName?: string;
+
+    @Field({nullable: true})
+    text?: string;
+}
 
 @ArgsType()
 export class CreateTodoArgs {
 
-    @Field()
-    text: string;
+    @Field({nullable: true})
+    categoryId?: string;
 
-    @Field()
-    categoryId: string;
+    @Field(() => Input)
+    input: Input;
 }
+
