@@ -1,0 +1,25 @@
+{
+  "name": "Nest.js server",
+  "description": "Nest.js server for todo project.",
+  "repository": "https://github.com/Doomsdhg/nest-server",
+  "scripts": {
+    "predeploy": "npm install && npm run build"
+  },
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment [production/development]",
+      "value": "production"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": ["heroku-postgresql"],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
