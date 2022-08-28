@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { CategoryModule } from './category/category.module';
+import { Constants } from './constants/constants';
 import { ormConfig } from './orm.config';
 import { TodoModule } from './todo/todo.module';
 
@@ -15,7 +16,7 @@ import { TodoModule } from './todo/todo.module';
       introspection: true,
       playground: true,
       debug: true,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql')
+      autoSchemaFile: join(process.cwd(), Constants.FILES_PATHS.GRAPHQL_SCHEMA)
     }),
     TypeOrmModule.forRoot(ormConfig),
     TodoModule

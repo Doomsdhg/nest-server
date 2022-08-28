@@ -1,12 +1,13 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Category } from "src/category/entities/category.entity";
+import { Constants } from "src/constants/constants";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType()
 @Entity()
 export class Todo {
     
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn(Constants.ENTITY_OPTIONS.UUID)
     @Field()
     id: string;
 
