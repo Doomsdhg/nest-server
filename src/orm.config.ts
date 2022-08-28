@@ -8,5 +8,7 @@ export const ormConfig: TypeOrmModuleOptions = {
     host: 'localhost',
     port: 5432,
     entities: ['dist/**/*.entity{.ts,.js}'],
-    synchronize: false
+    synchronize: false,
+    url: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
 };
