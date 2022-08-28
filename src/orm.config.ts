@@ -8,6 +8,6 @@ export const ormConfig: TypeOrmModuleOptions = {
       rejectUnauthorized: false,
     },
     entities: ['dist/**/*.entity{.ts,.js}'],
-    synchronize: true,
+    synchronize: false,
     autoLoadEntities: true,
   };
