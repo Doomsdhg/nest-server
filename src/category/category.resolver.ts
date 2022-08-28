@@ -1,4 +1,5 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Constants } from 'src/constants/constants';
 import { Todo } from 'src/todo/entities/todo.entity';
 import { CategoryService } from './categories.service';
 import { CreateCategoryArgs } from './dto/args/create-category.args';
@@ -11,7 +12,7 @@ export class CategoryResolver {
     private categoryService: CategoryService
     ){}
 
-    @Query(returns => [Category], { name: 'categories', nullable: true })
+    @Query(returns => [Category], { name: Constants.QUERY_NAMES.GET_ALL_CATEGORIES, nullable: true })
     getAllCategories(): Promise<Category[]> {
       return this.categoryService.getAll();
     }

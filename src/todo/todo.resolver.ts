@@ -1,6 +1,7 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { CategoryService } from 'src/category/categories.service';
 import { Category } from 'src/category/entities/category.entity';
+import { Constants } from 'src/constants/constants';
 import { CreateTodoArgs } from './dto/args/create-todo.args';
 import { ToggleTodoCompletedArgs } from './dto/args/toggle-todo-completed.args';
 import { Todo } from './entities/todo.entity';
@@ -13,7 +14,7 @@ export class TodoResolver {
         private categoryService: CategoryService
         ){}
 
-    @Query(returns => [Todo], { name: 'todos', nullable: true })
+    @Query(returns => [Todo], { name: Constants.QUERY_NAMES.GET_ALL_TODOS, nullable: true })
     getAllTodos(): Promise<Todo[]> {
       return this.todoService.getAll();
     }
