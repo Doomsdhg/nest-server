@@ -27,7 +27,7 @@ export class TodoResolver {
     @Mutation(returns => Todo)
     async toggleTodoCompleted(@Args() args: ToggleTodoCompletedArgs): Promise<Todo> {
       await this.todoService.toggleCompleted(args.todoId);
-      return this.todoService.findOne(args.todoId);
+      return await this.todoService.findOne(args.todoId);
     }
 
     @ResolveField()
