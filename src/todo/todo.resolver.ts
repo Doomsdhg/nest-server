@@ -15,13 +15,13 @@ export class TodoResolver {
         ){}
 
     @Query(returns => [Todo], { name: Constants.QUERY_NAMES.GET_ALL_TODOS, nullable: true })
-    getAllTodos(): Promise<Todo[]> {
-      return this.todoService.getAll();
+    async getAllTodos(): Promise<Todo[]> {
+      return await this.todoService.getAll();
     }
 
     @Mutation(returns => Todo)
     async createTodo(@Args() args: CreateTodoArgs): Promise<Todo> {
-      return this.todoService.create(args);
+      return await this.todoService.create(args);
     }
 
     @Mutation(returns => Todo)
