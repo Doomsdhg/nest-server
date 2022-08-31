@@ -13,17 +13,17 @@ export class CategoryResolver {
     ){}
 
     @Query(returns => [Category], { name: Constants.QUERY_NAMES.GET_ALL_CATEGORIES, nullable: true })
-    getAllCategories(): Promise<Category[]> {
-      return this.categoryService.getAll();
+    async getAllCategories(): Promise<Category[]> {
+      return await this.categoryService.getAll();
     }
 
     @Mutation(returns => Category)
-    createCategory(@Args() args: CreateCategoryArgs): Promise<Category> {
-      return this.categoryService.create(args.title);
+    async createCategory(@Args() args: CreateCategoryArgs): Promise<Category> {
+      return await this.categoryService.create(args.title);
     }
 
     @ResolveField()
     async todos(@Parent() category: Category): Promise<Todo[]>{
-      return this.categoryService.findCategoryTodos(category.id);
+      return await this.categoryService.findCategoryTodos(category.id);
     }
 }
