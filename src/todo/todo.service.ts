@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryService } from 'src/category/categories.service';
 import { Repository } from 'typeorm';
+import { CategoryService } from '../category/categories.service';
 import { CreateTodoArgs } from './dto/args/create-todo.args';
 import { Todo } from './entities/todo.entity';
 
