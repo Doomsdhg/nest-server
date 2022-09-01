@@ -20,13 +20,13 @@ export class TodoResolver {
 
     @Mutation(returns => Todo)
     async createTodo(@Args() args: CreateTodoArgs): Promise<Todo> {
-      return await this.todoService.create(args);
+      return await await this.todoService.create(args);
     }
 
     @Mutation(returns => Todo)
     async toggleTodoCompleted(@Args() args: ToggleTodoCompletedArgs): Promise<Todo> {
       await this.todoService.toggleCompleted(args.todoId);
-      return await this.todoService.findOne(args.todoId);
+      return await await this.todoService.findOne(args.todoId);
     }
 
     @ResolveField()

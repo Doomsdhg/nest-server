@@ -18,11 +18,11 @@ export class CategoryResolver {
 
     @Mutation(returns => Category)
     async createCategory(@Args() args: CreateCategoryArgs): Promise<Category> {
-      return await this.categoryService.create(args.title);
+      return await await this.categoryService.create(args.title);
     }
 
     @ResolveField()
     async todos(@Parent() category: Category): Promise<Todo[]>{
-      return await this.categoryService.findCategoryTodos(category.id);
+      return await await this.categoryService.findCategoryTodos(category.id);
     }
 }
