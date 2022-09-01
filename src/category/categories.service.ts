@@ -20,6 +20,7 @@ export class CategoryService {
 
     async getAll(): Promise<Category[]>{
         const categories: Category[] = await this.categoriesRepository.find();
+        console.log(categories);
         return this.sortTodosInCategories(categories);
     }
 
@@ -33,6 +34,9 @@ export class CategoryService {
 
     private sortTodosInCategories(categories: Category[]): Category[]{
         return categories.map((category: Category) => {
+            if (!category.todos){
+                return category;
+            }
             this.sortTodosAlphabetically(category);
             this.sortTodosByComplecity(category);
             return category;
