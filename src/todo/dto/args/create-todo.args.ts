@@ -5,12 +5,10 @@ import { IsNotEmpty, IsString } from "class-validator";
 @InputType()
 class Input {
 
-    @IsString()
     @Optional()
     @Field({nullable: true})
     categoryName?: string;
 
-    @IsString()
     @Optional()
     @Field({nullable: true})
     text?: string;
@@ -19,7 +17,6 @@ class Input {
 @ArgsType()
 export class CreateTodoArgs {
 
-    @IsString()
     @Optional()
     @Field({nullable: true})
     categoryId?: string;
