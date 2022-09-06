@@ -1,6 +1,6 @@
 import { Optional } from "@nestjs/common";
 import { ArgsType, Field, InputType } from "@nestjs/graphql";
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 
 @InputType()
 class Input {
